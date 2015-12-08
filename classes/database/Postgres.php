@@ -11,7 +11,7 @@ include_once('./classes/database/ADODB_base.php');
 
 class Postgres extends ADODB_base {
 
-	var $major_version = 9.3;
+	var $major_version = 9.4;
 	// Max object name length
 	var $_maxNameLen = 63;
 	// Store the current schema
@@ -170,7 +170,7 @@ class Postgres extends ADODB_base {
 	 * @param $conn The database connection
 	 */
 	public function __construct($conn) {
-		$this->ADODB_base($conn);
+		parent::__construct($conn);
 	}
 
 	// Formatting functions
@@ -275,6 +275,8 @@ class Postgres extends ADODB_base {
                 }
 			case 'text':
 			case 'text[]':
+			case 'json':
+			case 'jsonb': 
 			case 'xml':
 			case 'xml[]':
 				$n = substr_count($value, "\n");
@@ -417,7 +419,7 @@ class Postgres extends ADODB_base {
 	}
 
 	function getHelpPages() {
-		include_once('./help/PostgresDoc93.php');
+		include_once('./help/PostgresDoc94.php');
 		return $this->help_page;
 	}
 
