@@ -425,9 +425,9 @@
 
 	
 	/**
-	 * Constructor
+	 * Constructor. Cannot be instantiated
 	 */
-	function ADOConnection()			
+	public function __constructor()			
 	{
 		die('Virtual Class -- cannot instantiate');
 	}
@@ -2896,7 +2896,7 @@ http://www.stanford.edu/dept/itss/docs/oracle/10g/server.101/b10759/statements_1
 	 * @param queryID  	this is the queryID returned by ADOConnection->_query()
 	 *
 	 */
-	function ADORecordSet($queryID) 
+	public function __construct($queryID) 
 	{
 		$this->_queryID = $queryID;
 	}
@@ -3887,9 +3887,9 @@ http://www.stanford.edu/dept/itss/docs/oracle/10g/server.101/b10759/statements_1
 		 * Constructor
 		 *
 		 */
-		function ADORecordSet_array($fakeid=1)
+		public function __constructor($fakeid=1)
 		{
-		global $ADODB_FETCH_MODE,$ADODB_COMPAT_FETCH;
+			global $ADODB_FETCH_MODE,$ADODB_COMPAT_FETCH;
 		
 			// fetch() on EOF does not delete $this->fields
 			$this->compat = !empty($ADODB_COMPAT_FETCH);
